@@ -1,5 +1,5 @@
 terraform {
-  source = "git::ssh://git@github.com:deseive/terraform-modules.git//env_combined?ref=main"
+  source = "git::ssh://git@github.com/deseive/terraform-modules.git//env_combined?ref=main"
 }
 
 inputs = {
