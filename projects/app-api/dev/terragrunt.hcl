@@ -1,13 +1,12 @@
 terraform {
-  # Fetch the entire terraform-modules repo, then use its env_combined/ folder
-  source = "git::ssh://git@github.com/deseive/terraform-modules.git//env_combined?ref=main"
+  source = "git::ssh://git@github.com:deseive/terraform-modules.git//env_combined?ref=main"
 }
 
 inputs = {
   project_id         = "my-gcp-project-dev"
   naming_prefix      = "app-api-dev"
-  region             = "us-central1"            # for project module
-  location           = "us-central1"            # for Cloud Function & API Gateway
+  region             = "us-central1"
+  location           = "us-central1"
   function_name      = "app-api-function"
   runtime            = "go116"
   entry_point        = "HandleRequest"
