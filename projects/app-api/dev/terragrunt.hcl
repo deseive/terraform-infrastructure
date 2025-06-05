@@ -1,15 +1,18 @@
+remote_state {
+  backend = "gcs"
+  config = {
+    bucket = "terraform-state-app-api-dev"
+    prefix = "projects/app-api/dev"
+  }
+}
+
 terraform {
-  source = "git::ssh://git@github.com/deseive/terraform-modules.git//env_combined?ref=main"
+  source = "git::ssh://git@github.com:deseive/terraform-modules.git//env_combined?ref=main"
 }
 
 inputs = {
-  project_id         = "my-gcp-project-dev"
-  naming_prefix      = "app-api-dev"
-  region             = "us-central1"
-  location           = "us-central1"
-  function_name      = "app-api-function"
-  runtime            = "go116"
-  entry_point        = "HandleRequest"
-  domain_name        = "api-dev.example.com"
-  source_archive_gcs = "gs://my-bucket-dev/app-api-function.zip"
+  project_id    = "app-api-dev"
+  naming_prefix = "app-api-dev"
+  region        = "europe-west3"
+  domain_name   = "api-dev.example.com"
 }
