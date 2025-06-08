@@ -11,11 +11,11 @@ locals {
 
   env           = "dev"
   project       = "app-api"
-  random_suffix = "9zd2"
+  random_suffix = "8d2w"
 
   project_name  = "App API Dev Project"
   project_id    = "${local.project}-${local.env}-${local.random_suffix}"
-  tfstate_prefix = "${local.project_id}/terraform.tfstate"
+  tfstate_prefix = "${local.project_id}/projects.tfstate"
 }
 
 terraform {

@@ -1,8 +1,9 @@
 locals {
   org_id          = "131886726058"
   billing_account = "014EA1-22311E-5A7ED1"
-  region          = "europe-west3"
-
+  region          = "europe-west1"
+  
+  
   apis = [
     "cloudresourcemanager.googleapis.com",
     "iam.googleapis.com",
@@ -11,6 +12,8 @@ locals {
     "cloudbuild.googleapis.com",
     "artifactregistry.googleapis.com",
     "storage.googleapis.com",
-    "run.googleapis.com", # falls du Cloud Run stattdessen nutzt
+    "run.googleapis.com",
+    "certificatemanager.googleapis.com",
+    "dns.googleapis.com"
   ]
 }
