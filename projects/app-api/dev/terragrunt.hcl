@@ -11,11 +11,11 @@ locals {
 
   env           = "dev"
   project       = "app-api"
-  random_suffix = "5h8g"
+  random_suffix = "9zd2"
 
   project_name  = "App API Dev Project"
   project_id    = "${local.project}-${local.env}-${local.random_suffix}"
-  state_bucket  = "${local.project_id}-tfstate"
+  tfstate_prefix = "${local.project_id}/terraform.tfstate"
 }
 
 terraform {
@@ -28,8 +28,8 @@ generate "backend" {
   contents  = <<EOF
 terraform {
   backend "gcs" {
-    bucket  = "${local.state_bucket}"
-    prefix  = "terraform/state"
+    bucket  = "tfstate-org-bootstrap"
+    prefix  = "${local.tfstate_prefix}"
   }
 }
 EOF
@@ -42,4 +42,5 @@ inputs = {
   billing_account = local.billing_account
   region          = local.region
   apis            = local.apis
+  tfstate_bucket  = "tfstate-org-bootstrap"
 }
