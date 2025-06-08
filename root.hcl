@@ -14,6 +14,7 @@ locals {
     "storage.googleapis.com",
     "run.googleapis.com",
     "certificatemanager.googleapis.com",
-    "dns.googleapis.com"
+    "dns.googleapis.com",
+    "appengine.googleapis.com"
   ]
 }
