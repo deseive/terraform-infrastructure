@@ -16,6 +16,9 @@ locals {
   project_id   = "${local.project}-${local.env}-${local.random_suffix}"
   domain       = "api-dev.linorino.de"
   state_bucket = "tfstate-org-bootstrap"
+  # Change after first Github Actions run
+  image        = "gcr.io/cloudrun/hello"
+  #image         = "${local.region}-docker.pkg.dev/${local.project_id}/docker-${local.project_id}/${local.name}:latest"
 }
 
 terraform {
@@ -39,5 +42,6 @@ inputs = {
   project_id = local.project_id
   region     = local.region
   domain     = local.domain
-  name       = "api" # name of the Cloud Run service
+  name       = "api"
+  image      = local.image
 }
