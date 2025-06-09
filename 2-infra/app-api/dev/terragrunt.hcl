@@ -14,7 +14,7 @@ locals {
   random_suffix = "8d2w"
 
   project_id   = "${local.project}-${local.env}-${local.random_suffix}"
-  domain       = "api.roban.de"
+  domain       = "api-dev.linorino.de"
   state_bucket = "tfstate-org-bootstrap"
 }
 

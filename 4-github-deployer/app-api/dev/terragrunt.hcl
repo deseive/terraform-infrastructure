@@ -19,7 +19,7 @@ locals {
 }
 
 terraform {
-  source = "git::ssh://git@github.com/deseive/terraform-modules.git//cloud-run?ref=main"
+  source = "git::ssh://git@github.com/deseive/terraform-modules.git//github-deployer?ref=main"
 }
 
 generate "backend" {
@@ -29,7 +29,7 @@ generate "backend" {
 terraform {
   backend "gcs" {
     bucket  = "${local.state_bucket}"
-    prefix  = "${local.project_id}/cloud-run.tfstate"
+    prefix  = "${local.project_id}/github-deployer.tfstate"
   }
 }
 EOF
