@@ -14,11 +14,12 @@ locals {
   random_suffix = "8d2w"
 
   project_id   = "${local.project}-${local.env}-${local.random_suffix}"
+  project_number = "946357259966"
   domain       = "api-dev.linorino.de"
   state_bucket = "tfstate-org-bootstrap"
   # Change after first Github Actions run
   image        = "gcr.io/cloudrun/hello"
-  #image         = "${local.region}-docker.pkg.dev/${local.project_id}/docker-${local.project_id}/${local.name}:latest"
+  iap_member   = "user:gc@roban.de"
 }
 
 terraform {
@@ -42,6 +43,9 @@ inputs = {
   project_id = local.project_id
   region     = local.region
   domain     = local.domain
+  project_number = local.project_number
   name       = "api"
   image      = local.image
+  iap_member = local.iap_member
+
 }
