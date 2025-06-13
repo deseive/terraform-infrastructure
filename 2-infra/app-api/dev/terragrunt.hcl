@@ -16,6 +16,15 @@ locals {
   project_id   = "${local.project}-${local.env}-${local.random_suffix}"
   domain       = "api-dev.linorino.de"
   state_bucket = "tfstate-org-bootstrap"
+
+  # Inject secrets
+  secrets = [
+    "db_user",
+    "db_password",
+    "db_name"
+  ]
+
+  secrets_accessor = "user:gc@roban.de"
 }
 
 terraform {
@@ -36,7 +45,9 @@ EOF
 }
 
 inputs = {
-  project_id = local.project_id
-  region     = local.region
-  domain     = local.domain
+  project_id        = local.project_id
+  region            = local.region
+  domain            = local.domain
+  secrets           = local.secrets
+  secrets_accessor  = local.secrets_accessor
 }

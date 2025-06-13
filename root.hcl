@@ -16,6 +16,10 @@ locals {
     "certificatemanager.googleapis.com",
     "dns.googleapis.com",
     "appengine.googleapis.com",
-    "iap.googleapis.com"
+    "storage.googleapis.com",
+    "iap.googleapis.com",
+    "secretmanager.googleapis.com",
+    "vpcaccess.googleapis.com",
+    "compute.googleapis.com"
   ]
 }
