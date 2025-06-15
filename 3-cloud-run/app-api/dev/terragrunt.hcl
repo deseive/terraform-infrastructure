@@ -9,17 +9,31 @@ locals {
   region          = local.root_config.locals.region
   apis            = local.root_config.locals.apis
 
-  env           = "dev"
-  project       = "app-api"
-  random_suffix = "8d2w"
+  env             = "dev"
+  project         = "app-api"
+  random_suffix   = "8d2w"
 
-  project_id   = "${local.project}-${local.env}-${local.random_suffix}"
-  project_number = "946357259966"
-  domain       = "api-dev.linorino.de"
-  state_bucket = "tfstate-org-bootstrap"
-  # Change after first Github Actions run
-  image        = "gcr.io/cloudrun/hello"
-  iap_member   = "user:gc@roban.de"
+  project_id      = "${local.project}-${local.env}-${local.random_suffix}"
+  project_number  = "946357259966x"
+  domain          = "api-dev.linorino.de"
+  state_bucket    = "tfstate-org-bootstrap"
+  image           = "gcr.io/cloudrun/hello"
+  iap_member      = "user:gc@roban.de"
+  vpc_name        = "default"
+  database_version = "POSTGRES_17"
+
+  cloud_run_sa_email = "cloud-run-deployer@${local.project_id}.iam.gserviceaccount.com"
+
+  # 🔐 Secrets required by n8n service
+  secrets = [
+    "db_user",
+    "db_password",
+    "db_name",
+    "n8n_jwt_secret"
+  ]
+
+  # 🪣 Bucket used for persistent file storage in n8n
+  n8n_bucket_name = "${local.project_id}-n8n-data"
 }
 
 terraform {
@@ -40,12 +54,18 @@ EOF
 }
 
 inputs = {
-  project_id = local.project_id
-  region     = local.region
-  domain     = local.domain
-  project_number = local.project_number
-  name       = "api"
-  image      = local.image
-  iap_member = local.iap_member
+  project_id          = local.project_id
+  project_number      = local.project_number
+  region              = local.region
+  domain              = local.domain
+  name                = "api"
+  image               = local.image
+  iap_member          = local.iap_member
+  cloud_run_sa_email  = local.cloud_run_sa_email
+  vpc_name            = local.vpc_name
+  database_version    = local.database_version
 
+  # 🆕 Provide secrets and bucket name
+  secrets             = local.secrets
+  n8n_bucket_name     = local.n8n_bucket_name
 }
