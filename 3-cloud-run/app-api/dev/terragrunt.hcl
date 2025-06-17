@@ -17,15 +17,20 @@ locals {
   project_number  = "946357259966x"
   domain          = "api-dev.linorino.de"
   state_bucket    = "tfstate-org-bootstrap"
-  image           = "gcr.io/cloudrun/hello"
+  image           = "us-docker.pkg.dev/cloudrun/container/hello"
   iap_member      = "user:gc@roban.de"
   vpc_name        = "default"
   database_version = "POSTGRES_17"
+  database_tier   = "db-f1-micro"
 
   cloud_run_sa_email = "cloud-run-deployer@${local.project_id}.iam.gserviceaccount.com"
+  cloud_run_min_instances = 1
+  cloud_run_max_instances = 2
 
   # 🔐 Secrets required by n8n service
   secrets = [
+    #openssl rand -base64 24 | cut -c1-32
+    "n8n_encryption_key",
     "db_user",
     "db_password",
     "db_name",
@@ -34,6 +39,9 @@ locals {
 
   # 🪣 Bucket used for persistent file storage in n8n
   n8n_bucket_name = "${local.project_id}-n8n-data"
+  n8n_runners_enabled = true
+  n8n_runners_mode = "internal"
+
 }
 
 terraform {
@@ -62,10 +70,15 @@ inputs = {
   image               = local.image
   iap_member          = local.iap_member
   cloud_run_sa_email  = local.cloud_run_sa_email
+  cloud_run_min_instances = local.cloud_run_min_instances
+  cloud_run_max_instances = local.cloud_run_max_instances
   vpc_name            = local.vpc_name
   database_version    = local.database_version
+  database_tier       = local.database_tier
 
   # 🆕 Provide secrets and bucket name
   secrets             = local.secrets
   n8n_bucket_name     = local.n8n_bucket_name
+  n8n_runners_enabled = local.n8n_runners_enabled
+  n8n_runners_mode    = local.n8n_runners_mode
 }

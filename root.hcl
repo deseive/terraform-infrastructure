@@ -21,6 +21,7 @@ locals {
     "secretmanager.googleapis.com",
     "vpcaccess.googleapis.com",
     "compute.googleapis.com",
-    "servicenetworking.googleapis.com"
+    "servicenetworking.googleapis.com",
+    "containeranalysis.googleapis.com"
   ]
 }
