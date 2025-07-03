@@ -14,7 +14,7 @@ locals {
   random_suffix   = "8d2w"
 
   project_id      = "${local.project}-${local.env}-${local.random_suffix}"
-  project_number  = "946357259966x"
+  project_number  = "946357259966"
   domain          = "api-dev.linorino.de"
   state_bucket    = "tfstate-org-bootstrap"
   image           = "us-docker.pkg.dev/cloudrun/container/hello"
