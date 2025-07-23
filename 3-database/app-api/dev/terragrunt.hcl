@@ -24,8 +24,8 @@ locals {
   database_tier   = "db-f1-micro"
 
   cloud_run_sa_email = "cloud-run-deployer@${local.project_id}.iam.gserviceaccount.com"
-  cloud_run_min_instances = 1
-  cloud_run_max_instances = 2
+  cloud_run_min_instances = 2
+  cloud_run_max_instances = 3
 
   # 🔐 Secrets required by n8n service
   secrets = [
@@ -45,7 +45,8 @@ locals {
 }
 
 terraform {
-  source = "git::ssh://git@github.com/deseive/terraform-modules.git//cloud-run?ref=main"
+  #source = "git::ssh://git@github.com/deseive/terraform-modules.git//cloud-run?ref=main"
+  source = "/Users/roban/git/terraform-modules/cloud-run"
 }
 
 generate "backend" {

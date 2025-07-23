@@ -22,6 +22,9 @@ locals {
     "vpcaccess.googleapis.com",
     "compute.googleapis.com",
     "servicenetworking.googleapis.com",
-    "containeranalysis.googleapis.com"
+    "containeranalysis.googleapis.com",
+    "docs.googleapis.com",
+	  "drive.googleapis.com",
+	  "gmail.googleapis.com",
   ]
 }
