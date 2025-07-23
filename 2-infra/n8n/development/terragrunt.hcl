@@ -16,10 +16,6 @@ inputs = {
 
   secrets           = [
     "n8n_encryption_key",
-    "db_user",
-    "db_password",
-    "db_name",
-    "n8n_jwt_secret",
   ]
 
   secrets_accessor  = "user:gc@roban.de"
