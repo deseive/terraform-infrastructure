@@ -2,29 +2,23 @@ locals {
   org_id          = "131886726058"
   billing_account = "014EA1-22311E-5A7ED1"
   region          = "europe-west1"
-  
-  
-  apis = [
-    "cloudresourcemanager.googleapis.com",
-    "iam.googleapis.com",
-    "serviceusage.googleapis.com",
-    "cloudfunctions.googleapis.com",
-    "cloudbuild.googleapis.com",
-    "artifactregistry.googleapis.com",
-    "storage.googleapis.com",
-    "run.googleapis.com",
-    "certificatemanager.googleapis.com",
-    "dns.googleapis.com",
-    "appengine.googleapis.com",
-    "storage.googleapis.com",
-    "iap.googleapis.com",
-    "secretmanager.googleapis.com",
-    "vpcaccess.googleapis.com",
-    "compute.googleapis.com",
-    "servicenetworking.googleapis.com",
-    "containeranalysis.googleapis.com",
-    "docs.googleapis.com",
-	  "drive.googleapis.com",
-	  "gmail.googleapis.com",
-  ]
+  tfstate_bucket  = "tfstate-org-bootstrap"
+}
+
+inputs = {
+  org_id          = local.org_id
+  billing_account = local.billing_account
+  region          = local.region
+}
+
+remote_state {
+  backend = "gcs"
+  generate = {
+    path      = "backend.tf"
+    if_exists = "overwrite_terragrunt"
+  }
+  config = {
+    bucket = "tfstate-org-bootstrap"
+    prefix = "terraform/projects/${path_relative_to_include()}"
+  }
 }
