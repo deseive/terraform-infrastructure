@@ -3,8 +3,7 @@ include "root" {
 }
 
 terraform {
-  # source = "git::ssh://git@github.com/deseive/terraform-modules.git//infra?ref=main"
-  source = "/Users/roban/git/terraform-modules/infra"
+  source = "git::ssh://git@github.com/deseive/terraform-modules.git//infra?ref=main"
 }
 
 inputs = {
@@ -13,7 +12,6 @@ inputs = {
   environment     = "development"
   random_suffix   = "8d2w"
 
-  # infra-specific settings
   domain            = "n8n-dev.roban.de"
 
   secrets           = [
@@ -23,5 +21,6 @@ inputs = {
     "db_name",
     "n8n_jwt_secret",
   ]
+
   secrets_accessor  = "user:gc@roban.de"
 }

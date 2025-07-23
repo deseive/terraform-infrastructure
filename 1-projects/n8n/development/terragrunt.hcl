@@ -3,8 +3,7 @@ include "root" {
 }
 
 terraform {
-  #source = "git::ssh://git@github.com/deseive/terraform-modules.git//bootstrap?ref=main"
-  source = "/Users/roban/git/terraform-modules/project"
+  source = "git::ssh://git@github.com/deseive/terraform-modules.git//project?ref=main"
 }
 
 inputs = {
