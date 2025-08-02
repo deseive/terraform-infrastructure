@@ -2,7 +2,7 @@ locals {
   org_id          = "131886726058"
   billing_account = "014EA1-22311E-5A7ED1"
   region          = "europe-west1"
-  tfstate_bucket  = "tfstate-org-bootstrap"
+  tfstate_bucket  = "bootstrap-org-tfstate"
 }
 
 inputs = {
@@ -17,8 +17,11 @@ remote_state {
     path      = "backend.tf"
     if_exists = "overwrite_terragrunt"
   }
+
   config = {
-    bucket = "tfstate-org-bootstrap"
-    prefix = "terraform/projects/${path_relative_to_include()}"
+    project = "bootstrap-seed-project"
+    bucket   = "bootstrap-org-tfstate"
+    location = "europe-west1"
+    prefix   = "terraform/projects/${path_relative_to_include()}"
   }
 }

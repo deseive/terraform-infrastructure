@@ -3,14 +3,16 @@ include "root" {
 }
 
 terraform {
-  source = "git::ssh://git@github.com/deseive/terraform-modules.git//project?ref=main"
+  #source = "git::ssh://git@github.com/deseive/terraform-modules.git//project?ref=main"
+  source = "/Users/roban/git/terraform-modules/project"
 }
 
 inputs = {
   name        = "n8n"
   env_code    = "dev"
   environment = "development"
-  random_suffix   = "8d2w"
+  random_suffix   = "6hf4"
+  alert_email = "andredeseive@gmail.com"
 
   activate_apis = [
     "cloudresourcemanager.googleapis.com",

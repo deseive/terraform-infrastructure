@@ -3,7 +3,9 @@ include "root" {
 }
 
 terraform {
-  source = "git::ssh://git@github.com/deseive/terraform-modules.git//bootstrap?ref=main"
+  #source = "git::ssh://git@github.com/deseive/terraform-modules.git//bootstrap?ref=main"
+  source = "/Users/roban/git/terraform-modules/bootstrap"
+
 }
 
 inputs = {
@@ -15,7 +17,6 @@ inputs = {
   budget_amount    = 100
   budget_currency  = "EUR"
   budget_threshold = 0.8
-  alert_email = "andredeseive@gmail.com"
 }
 
 remote_state {
