@@ -11,7 +11,7 @@ inputs = {
   env_code        = "dev"
   environment     = "development"
   random_suffix   = "9dh3"
-
+  
   release_channel = "REGULAR"
 
   network         = "projects/gke-dev-9dh3/global/networks/gke-autopilot-vpc"
@@ -26,4 +26,8 @@ inputs = {
   resource_labels = {
     owner = "platform"
   }
+
+  workload_service_accounts = [
+    "terraform-n8n-dev-6hf4@n8n-dev-6hf4.iam.gserviceaccount.com",
+  ]
 }

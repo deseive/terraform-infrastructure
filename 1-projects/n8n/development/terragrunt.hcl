@@ -13,6 +13,8 @@ inputs = {
   environment = "development"
   random_suffix   = "6hf4"
   alert_email = "andredeseive@gmail.com"
+  iam_impersonation   = "user:gc@roban.de"
+  terraform_bootstrap_sa = "terraform@bootstrap-seed-project.iam.gserviceaccount.com"
 
   activate_apis = [
     "cloudresourcemanager.googleapis.com",
