@@ -15,13 +15,15 @@ inputs = {
   alert_email = "andredeseive@gmail.com"
   iam_impersonation   = "user:gc@roban.de"
   terraform_bootstrap_sa = "terraform@bootstrap-seed-project.iam.gserviceaccount.com"
-
+  github_org  = "deseive"
+  github_repo = "n8n"
   activate_apis = [
     "cloudresourcemanager.googleapis.com",
     "iam.googleapis.com",
     "serviceusage.googleapis.com",
     "cloudfunctions.googleapis.com",
     "cloudbuild.googleapis.com",
+    "container.googleapis.com",
     "artifactregistry.googleapis.com",
     "storage.googleapis.com",
     "run.googleapis.com",

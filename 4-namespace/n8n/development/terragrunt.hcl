@@ -6,7 +6,6 @@ terraform {
   source = "/Users/roban/git/terraform-modules/namespace"
 }
 
-
 dependency "gke" {
   config_path = "../../../2-infra/gke/development"
 }

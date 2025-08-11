@@ -14,7 +14,6 @@ inputs = {
   name             = "n8n"
   env_code         = "dev"
   random_suffix    = "6hf4"
-  domain           = "n8n-dev.roban.de"
   secrets           = [
     "N8N_ENCRYPTION_KEY",
   ]
